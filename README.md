@@ -58,9 +58,9 @@ services:
         - './data/db/postgresql/data:/var/lib/postgresql/data'
         - './init-db-scripts:/docker-entrypoint-initdb.d:ro'
     ports:
-        - "127.0.0.1:5432:5432"
+        - "5432"
     environment:
-        POSTGRES_HOST_AUTH_METHOD: trust
+        POSTGRES_PASSWORD=pass
 ```
 The `init-db-scripts` volume is optional. It can be used for init scripts. From the previous example `init-db-scripts/01-init-db.sh`:
 ```
