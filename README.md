@@ -3,6 +3,11 @@ Some notes to get up and running with development inside wsl
 
 Assumes wsl2 setup after the 2020 may update. [wsl2](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index)
 
+**Basic setup Ubuntu**
+```
+$ sudo apt-get install build-essential
+```
+
 ## File system access
 
 From windows navigate to `\\wsl$\` You will see your distributions.
