@@ -4,13 +4,38 @@ Some notes to get up and running with development inside wsl
 Assumes wsl2 setup after the 2020 may update. [wsl2](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index)
 
 **Basic setup Ubuntu**
+```bash
+sudo apt-get install build-essential
 ```
-$ sudo apt-get install build-essential
+
+## SSH keys
+
+Use `sudo apt install keychain`, copy your ssh keys to `~/.ssh` andd add to `~/.bashrc` or any alternative:
+```bash
+eval `keychain --eval --agents ssh id_rsa`
 ```
 
 ## File system access
 
 From windows navigate to `\\wsl$\` You will see your distributions.
+
+## Running GUI apps
+
+On windows (use either choco or scoop)
+`scoop install vcxsrv`
+
+See options here: https://medium.com/@ragin/development-under-windows-under-linux-with-wsl2-intellij-860daf601b61
+
+Run `xlaunch.exe` and save the configuration file somewhere then create a shortcut that would run `xlaunch.exe -run config.xlaunch`
+
+For the WSL DISPLAY setup use the external IP of the computer (unless port-forwarding is turned on)
+
+E.g. add to bashrc:
+```bash
+export WSL_EXTERNAL_IP=$(ipconfig.exe | grep "Wi-Fi" -n | awk -F ":" '{print $1+4}')
+export DISPLAY=$(ipconfig.exe | awk -v a=$WSL_EXTERNAL_IP '{if (NR==a) print $NF":0.0"}' | tr -d "\r")
+# export LIBGL_ALWAYS_INDIRECT=1
+```
 
 ## docker
 
