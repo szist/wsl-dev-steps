@@ -21,6 +21,9 @@ From windows navigate to `\\wsl$\` You will see your distributions.
 
 ## Running GUI apps
 
+Microsoft added gui support with [wslg](https://github.com/microsoft/wslg#updating-wsl--wslg)
+
+### Before WSLg
 On windows (use either choco or scoop)
 `scoop install vcxsrv`
 
